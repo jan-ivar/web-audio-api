@@ -8252,6 +8252,28 @@ if (pan &lt;= 0) {
           Deprecation of <a><code>ScriptProcessorNode</code></a> will make this
           consideration less important over time.
         </p>
+          Additionally, some <a>AudioNode</a>s can add latency to some paths of
+          the audio graph, notably:
+        </p>
+        <ul>
+          <li> The <a>DelayNode</a>, whose role is to add controled latency
+          time.</li>
+          <li> The <a>AudioWorker</a> can run a script that buffers internaly,
+          adding delay to the signal path</li>
+          <li>The <a>ScriptProcessorNode</a> can have buffers between the
+          control thread and the rendering thread </li>
+          <li>The <a>ConvolverNode</a> depending on the impulse, can delay
+          incoming samples </li>
+          <li>The <a>DynamicsCompressorNode</a> has a look ahead algorithm
+          that causes delay in the signal path</li>
+          <li>The <a>BiquadFilterNode</a> and <a>IIRFilterNode</a> filter design can delay incoming
+          samples</li>
+          <li>The <a>WaveShaperNode</a>, when oversampling, and depending on
+          the oversampling technique, add delays to the signal path.</li>
+          <li>The <a>MediaStreamAudioSourceNode</a> and
+          <a>MediaStreamAudioDestinationNode</a>, depending on the
+          implementation, can add buffer internaly and add delays</li>
+        </ul>
       </section>
       <section>
         <h3>
