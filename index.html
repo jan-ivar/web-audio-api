@@ -8256,24 +8256,25 @@ if (pan &lt;= 0) {
           the audio graph, notably:
         </p>
         <ul>
-          <li>The <a>AudioWorker</a> can run a script that buffers internaly,
+          <li>The <a>AudioWorker</a> can run a script that buffers internally,
           adding delay to the signal path
           </li>
           <li>The <a>DelayNode</a>, whose role is to add controlled latency
-          time.
+          time
           </li>
           <li>The <a>BiquadFilterNode</a> and <a>IIRFilterNode</a> filter
-          design can delay incoming samples
+          design can delay incoming samples, as a natural consequence of the
+          causal filtering process
           </li>
           <li>The <a>ConvolverNode</a> depending on the impulse, can delay
-          incoming samples
+          incoming samples, as a natural result of the convolution operation
           </li>
           <li>The <a>DynamicsCompressorNode</a> has a look ahead algorithm that
           causes delay in the signal path
           </li>
           <li>The <a>MediaStreamAudioSourceNode</a> and
           <a>MediaStreamAudioDestinationNode</a>, depending on the
-          implementation, can add buffer internaly and add delays
+          implementation, can add buffers internally that add delays
           </li>
           <li>The <a>ScriptProcessorNode</a> can have buffers between the
           control thread and the rendering thread
